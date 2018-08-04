@@ -1,0 +1,6 @@
+[package]
+name = "d1rs"
+version = "0.1.0"
+authors = ["_nick <khoanta.96@gmail.com>"]
+
+[dependencies]
