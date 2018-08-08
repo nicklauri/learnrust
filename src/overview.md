@@ -1,5 +1,5 @@
 Ahhh, mà lỡ click vào rồi...
-##– Rồi nói gì nói đi:
+## – Rồi nói gì nói đi:
 - Nói một chút về cái topic này: nó là mở đầu cho series học Rust dzí tui, được truyền cảm hứng từ 2 topics của boss Đạt: [Khuyến khích mọi người nên học NNLT mới](https://daynhauhoc.com/t/khuyen-khich-moi-nguoi-nen-hoc-ngon-ngu-lap-trinh-moi/71928) và [Series học GoLang của anh Đạt](https://daynhauhoc.com/t/golang-bai-1-tour-of-go-hello-world/71940) nên mình sẽ viết một series về ngôn ngữ lập trình Rust – một NNLT mà hiện tại mình cực kỳ thích (và **rất** lâu rồi chưa viết gì với cũng rớt hạng mất tiêu rồi :'( ). Bản thân mình đánh giá Rust rất đáng học (dĩ nhiên là vậy rồi :joy: không phải thì bỏ công ra viết làm gì?). Trang chủ của RustLang: https://www.rust-lang.org/vi-VN/. Mình muốn Rust được nhiều sự chú ý mà nó đáng ra phải có :hand_splayed:. 
 - Series này hướng đến mục tiêu là nắm được cơ bản về Rust.
 - Với tư cách là **người cùng học** và là người đã học trước (cũng được mấy tháng rồi, không nhớ là bao lâu nữa, chắc nửa năm), mình sẽ học cùng bạn, hỗ trợ bạn, gợi ý hướng sửa, giải thích chỗ sai, chỉ dẫn tài liệu cho bạn, ... Nhưng với mình, **không có chuyện mình viết code dùm bạn**, kết quả là mình sẽ không rep post của bạn. Bạn học cho bản thân mà, tự sửa sai thì mới tiến bộ được. Lưu ý nữa: mình sẽ không là giáo viên của bạn (vì kinh nghiệm và trình độ của mình không phải thượng thừa với mình không có hứng thú nhận học sinh). Nói trước để các bạn không kỳ vọng quá nhiều.
@@ -7,7 +7,7 @@ Ahhh, mà lỡ click vào rồi...
 - Trong lúc viết bài, sai sót là không thể tránh khỏi. Mọi góp ý đều được chào đón!
 - Vì mình có lịch học (với hơi lười) :'( nên không có viết bài thường xuyên (dự kiến 1 tuần 1-2 bài), nếu bạn muốn có bài mới thì có thể inbox nhẹ nhàng nhắc nhở mình. Mình cảm ơn trước.
 
-##– Ờ, vậy rồi bạn lấy cái gì mà viết:
+## – Ờ, vậy rồi bạn lấy cái gì mà viết:
 - Tài liệu! Tài liệu thì mình sẽ sử dụng kết hợp giữa kinh nghiệm của mình với:
  - [Rust by examples](https://doc.rust-lang.org/stable/rust-by-example): Học Rust kết hợp với thực hành   online. Nếu bạn học một mình và cảm thấy khá là chán khi chỉ ngồi đọc docs và (có thể) phải loay hoay với việc cài đặt đủ thứ thì học ở trang này nhanh, gọn, lẹ.
  - [The Rust Official Docs – Second Edition](https://doc.rust-lang.org/book/second-edition/index.html): Trang chủ của ebook học Rust.
@@ -22,7 +22,7 @@ Ahhh, mà lỡ click vào rồi...
  - Còn nhiều nữa: [4rum cho Rust users](https://users.rust-lang.org/), [Bàn tán về bản thân Rust](https://internals.rust-lang.org/), ...
 - Vì mình không có ra bài thường xuyên nên các bạn có thể đọc tài liệu trước cũng được, hãy cảm thấy thoải mái khi gửi tin nhắn hỏi cho mình nhé, nhớ là **đừng bảo mình viết code dùm** nhé :joy: mình cho ăn bơ á. Lưu ý là các tài liệu được viết bằng tiếng Anh, nếu bạn "không đọc được" thì bạn có 2 lựa chọn: "có gì to tát đâu :smirk:" - Học tiếng  Anh luôn, mần gì cử;hoặc "tui hổng thích ăn sung còn trên cây :relieved:" - Đợi mình viết bài, hoặc chủ động đi hỏi (dĩ nhiên là lâu hơn).
 
-##– Ừhm, cũng ổn đấy, nói nữa đi:
+## – Ừhm, cũng ổn đấy, nói nữa đi:
 - Rust cũng có các điểm thuận lợi và bất lợi. Ngay từ trang chủ, đập vào mắt là Rust:
  1. Nhanh, Rust là ngôn ngữ biên dịch và không có GC (garbage collector: bộ dọn rác) như các ngôn ngữ thông dịch hay biên dịch (như Go) khác. Tốc độ thực tiệm cận với C/C++. Tham khảo chỉ mang tính tham khảo [the benchmarksgame](https://benchmarksgame-team.pages.debian.net/benchmarksgame/faster/rust.html).
  2. Move semantics (không biết dịch sao cho vừa lòng) và Guaranteed Memory Safety (đảm bảo an toàn bộ nhớ): nghĩa là khi một biến gán giá trị cho một biến khác thì cũng sẽ chuyển *quyền sở hữu* của nó cho biến đó, dĩ nhiên là nó không thể nào đọc/ghi được giá trị nữa. Thực tế: bạn không thể nào có quyển sách đó nếu bạn đã đưa nó cho người khác. Xét 2 ví dụ đơn giản giữa C++ và Rust (xem ở cuối section này).
@@ -61,12 +61,12 @@ Trong 2 ví dụ trên, C++ hoàn toàn có thể compile và chạy được nh
 
 Chi tiết và sinh động hơn, các bạn hãy đọc bài của chú thefullsnack tại [đây](https://thefullsnack.com/posts/rust-intro.html) (chú trả tiền cho con vì pr dùm chú đi :P ).
 
-##– Rồi cài đặt sao?
+## – Rồi cài đặt sao?
 
 Trang chủ đã hướng dẫn khá là rõ ràng, có cả tiếng Việt nữa: https://www.rust-lang.org/vi-VN/install.html
 Đối với các bạn sử dụng *nix thì vẫn có các package riêng lẻ như rustc, cargo, ... mình thấy nó sẽ khá rối và update thì phải đợi mirror. Mình muốn đơn giản thì chỉ cần theo hướng dẫn là đủ. Nếu trong quá trình cài đặt xuất hiện lỗi thì bạn có thể reply post này, mình sẽ cố gắng hỗ trợ. (Mình không có lưu ý gì vì mình chưa cài lỗi bao giờ :smile:) 
 
-##– Tui thắc mắc cái này nè:
+## – Tui thắc mắc cái này nè:
 1. Q: Kinh nghiệm kiểu abc, xyz,... như tui thì có học được không?
 A: Muốn thì được hết. Nhưng có thể sẽ phức tạp hơn các ngôn ngữ bạn từng học nên cần thời gian. Vì phức tạp nên cũng dễ nản, chuyện đương nhiên mà! Nhưng đừng lo, nó sẽ đáng công sức bạn bỏ ra. Lý do? Nó :clap: sẽ :clap: không  :clap: bao :clap: giờ :clap: có :clap: Segmentation :clap: Fault!  :clap:
 2. Q: Khoảng bao lâu thì tui sẽ nắm vững cơ bản như cú pháp?

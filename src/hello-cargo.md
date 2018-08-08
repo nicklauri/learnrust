@@ -1,6 +1,4 @@
-<Title: 'Hello' Cargo />
-
-##— Mở đầu
+## — Mở đầu
 Ngày hôm qua ([ngày 0](https://daynhauhoc.com/t/cung—hoc—rust—ngay—thu—0—hoc—hanh—gi—gio—nay/71992)), mình đã giới thiệu sơ lược về Rust, nếu bạn chưa nghe qua Rust thì có thể đọc lại. Lưu ý, các ví dụ mình sẽ viết trên Linux.
 Ngày hôm nay, chúng ta sẽ học:
 
@@ -13,7 +11,7 @@ Yêu cầu:
  — Đã cài đặt thành công Rust (stable) 1.28 trên máy. Kiểm tra bằng cách gõ `rustc --version` vào cửa sổ dòng lệnh.
 
 ---
-##— "Hello world!" bằng Rust?
+## — "Hello world!" bằng Rust?
 Một file mã nguồn của Rust có phần mở rộng là `.rs`. Gõ lại đoạn mã sau là lưu lại với tên bất kỳ cùng với `.rs` (`helloworld.rs` chẳng hạn). Rust có hỗ trợ trên vim, Sublime Text, VS Code,... Nếu bạn muốn mình chọn dùm, mình chọn Sublime Text với package Rust Enhanced (giúp bạn kiểm tra code khi save).
 Nếu bạn chưa cài đặt Rust vào máy thì bạn cũng có thể truy cập play.rust-lang.org gõ lại đoạn mã sau vào.
 
@@ -53,7 +51,7 @@ Kết: Viết nhiều như thế nhưng có lẽ đa số các bạn đều đã
 Phát triển: Hãy thử thay chuỗi "Hello world!" bằng một chuỗi khác xem. Chẳng hạn một chuỗi "trái tim lấp lánh 💖" chẳng hạn?
 
 ---
-##— Làm việc với giao diện dòng lệnh
+## — Làm việc với giao diện dòng lệnh
 
 Như yêu cầu của mình ở trên, các bạn cần phải biết một số thao tác cơ bản với dòng lệnh để có thể dễ dàng theo dõi hướng dẫn này. Nếu còn băn khoăn, đừng ngần ngại dùng Google nhé!
 
@@ -83,7 +81,7 @@ Chương trình đã thực thi thành công và in ra màn hình dòng "Hello w
 Ngoài ra, `rustc` còn có cách chế độ optimize khác nhau, nhưng mình sẽ không đề cập ở đây. Các bạn có thể tự tìm hiểu thêm thông qua Google hoặc (`rustc --help`). Vì chúng ta sẽ sử dụng một công cụ thay chúng ta làm các việc này.
 Đối với một chương trình lớn, nhiều thư viện ngoài, compile bằng cách này không hay và mất thời gian. Mình sẽ hướng dẫn các bạn dùng CMake để tạo ra Makefile rồi dùng Makefilesss này compile cả dự án của bạn :joy:. Nói chứ đùa thôi, Rust toolchains đi kèm công cụ tên Cargo (như phần mở đầu có đề cập), giúp quản lý dự án của bạn khá hiệu quả.
 
-###— I love Cargo
+### — I love Cargo
 
 Cargo là công cụ rất hiệu quả, giúp tiết kiệm công sức của bạn. Cargo cuả Rust tương tự như nodejs có npm, ... vậy.
 Phiên bản cargo mình dùng trong bài viết này là: `cargo 1.28.0 (96a2c7d16 2018—07—13)`
@@ -117,13 +115,13 @@ OPTIONS:
 Các subcommands mà các bạn mới học sẽ hay dùng:
 
 - `new`: dùng để tạo 1 project mới. Có 2 options cơ bản:
-  - `--bin`: tạo project là 1 ứng dụng thực thi (mặc định nếu bạn không dùng options nào cả). Cây thư mục có dạng: <img src='d1.cargo.new.bin+tree.png'>. File `src/main.rs` là file chính chứa hàm `main`, `Cargo.toml` là dùng để thêm các thư viện cần thiết, thay đổi version, thêm các options dành cho việc build, ...
+  - `--bin`: tạo project là 1 ứng dụng thực thi (mặc định nếu bạn không dùng options nào cả). Cây thư mục có dạng: ![](hello-cargo/d1.cargo.new.bin+tree.png) File `src/main.rs` là file chính chứa hàm `main`, `Cargo.toml` là dùng để thêm các thư viện cần thiết, thay đổi version, thêm các options dành cho việc build, ...
   - `--lib`: tạo project là 1 thư viện, file chính là `lib.rs` thay vì `main.rs` như ví dụ trên, hàm `main` không bắt buộc. Thư viện tạo ra có thể là thư viện Rust (`.rlib`) hay `.dll`/`.so`, ...
   - Ngoài ra, cargo còn 'init' git dùm mình. Nếu bạn không dùng git thì có thể bỏ qua.
 - `build`: dùng để ... build project. Mặc định Rust sẽ build ở mode debug và không optimize. Mode này hữu ích với bạn khi cần debug nhưng nó sẽ không nhanh.
   - `--release`: để optimize.
   - `—v` hoặc `--verbose`: có thể trong lúc build, cargo bị sản, hãy dùng option này để xem cargo đang làm gì project của mình khi build (nói chính xác là option này chỉ định cargo hiện ra chi tiết tiến trình làm việc).
-  - Sau khi build, một thư mục tên là `target` sẽ được tạo, tùy vào bạn có sử dụng `--release` hay không mà sẽ có thư mục `debug` hay `release` tương ứng như hình sau: <img src='d1.cargo.run+tree.png' />
+  - Sau khi build, một thư mục tên là `target` sẽ được tạo, tùy vào bạn có sử dụng `--release` hay không mà sẽ có thư mục `debug` hay `release` tương ứng như hình sau: ![](hello-cargo/d1.cargo.run+tree.png)
 - `check`: như `build` (cũng có `--release` và `--verbose`) nhưng chỉ check lỗi trong project, không tạo ra bất kỳ file nào (nhưng cargo vẫn sẽ tải và 'compile' các thư viện còn thiếu). Lệnh hày hữu ích khi bạn chỉ muốn xem trong project còn lỗi cú pháp nào hay không (vì thời gian compile của rustc là hơi lâu).
 - `run`: như `build` (cũng có `--release` và `--verbose`) nhưng sau khi build, cargo sẽ gọi luôn file thực thi.
 
@@ -135,4 +133,4 @@ Một file `Cargo.lock` sẽ tạo sau lần `check`, `build`, `run` lần đầ
 Mình lưu ý thế này để khi các bạn dùng Sublime Text (+ Rust enhanced) có thể sẽ hơi hoang mang: tại sao cargo không chịu build dùm tui đi chứ? Vì khi bạn `Ctrl+S` thì Rust Enhanced sẽ chạy kiểm tra lỗi và lock file `Cargo.lock` nên cargo chưa thể build được.
 
 ---
-##— Contributors:
+## — Contributors:

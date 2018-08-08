@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hello Cargo - </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="overview.html"><strong aria-hidden="true">1.</strong> Hello Rust</a></li><li><a href="hello-cargo.html" class="active"><strong aria-hidden="true">2.</strong> Hello Cargo</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title"></h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#a-mở-đầu" id="a-mở-đầu"><h2>— Mở đầu</h2></a>
+<p>Ngày hôm qua (<a href="https://daynhauhoc.com/t/cung%E2%80%94hoc%E2%80%94rust%E2%80%94ngay%E2%80%94thu%E2%80%940%E2%80%94hoc%E2%80%94hanh%E2%80%94gi%E2%80%94gio%E2%80%94nay/71992">ngày 0</a>), mình đã giới thiệu sơ lược về Rust, nếu bạn chưa nghe qua Rust thì có thể đọc lại. Lưu ý, các ví dụ mình sẽ viết trên Linux.
+Ngày hôm nay, chúng ta sẽ học:</p>
+<p>— Cấu trúc một chương trình &quot;Hello world!&quot; trên Rust.
+— Làm quen với dòng lệnh: trình biên dịch rustc và công cụ quản lý dự án và thư viện — Cargo.</p>
+<p>Yêu cầu:</p>
+<p>— Biết sử dụng dòng lệnh cơ bản: bash hoặc cmd (như setup biến môi trường, sử dụng lệnh <code>cd</code>, ... vì sẽ rất mất thời gian nếu mình phải đào tạo cách sử dụng).
+— Đã cài đặt thành công Rust (stable) 1.28 trên máy. Kiểm tra bằng cách gõ <code>rustc --version</code> vào cửa sổ dòng lệnh.</p>
+<hr />
+<a class="header" href="#a-hello-world-bằng-rust" id="a-hello-world-bằng-rust"><h2>— &quot;Hello world!&quot; bằng Rust?</h2></a>
+<p>Một file mã nguồn của Rust có phần mở rộng là <code>.rs</code>. Gõ lại đoạn mã sau là lưu lại với tên bất kỳ cùng với <code>.rs</code> (<code>helloworld.rs</code> chẳng hạn). Rust có hỗ trợ trên vim, Sublime Text, VS Code,... Nếu bạn muốn mình chọn dùm, mình chọn Sublime Text với package Rust Enhanced (giúp bạn kiểm tra code khi save).
+Nếu bạn chưa cài đặt Rust vào máy thì bạn cũng có thể truy cập play.rust-lang.org gõ lại đoạn mã sau vào.</p>
+<pre><pre class="playpen"><code class="language-rust">// Đây là comment 1 dòng
+/*
+   Đây là comment nhiều dòng.
+ */
+
+fn main() {
+    println!(&quot;Hello world!&quot;);
+}
+</code></pre></pre>
+<p>Nếu bạn sử dụng Rust Playground thì chỉ cần nhấn Run thì chương trình sẽ được compile online và in dòng &quot;Hello world!&quot; ra màn hình. Rất đơn giản phải không nào? :joy:
+Nếu bạn muốn compile offline (sẽ nói chi tiết hơn ở mục sau), mở cửa sổ dòng lệnh, hãy chắc ăn là thư mục làm việc hiện hành (current working directory) đang chứa file cần compile, rồi gõ <code>rustc helloworld.rs</code> (nếu bạn đã đặt tên nó là <code>helloworld.rs</code>). Sau đó chạy <code>./helloworld</code> (Linux) hoặc <code>.\helloworld.exe</code> (Windows). Kết quả cũng tương tự với cách trên.
+Ta xét từng chi tiết của chương trình trên:</p>
+<ul>
+<li>Với comment, không còn gì rõ ràng hơn:</li>
+<li><code>//</code>: sẽ đánh dấu nội dung phía sau là comment cho đến hết dòng.</li>
+<li><code>/*</code>: sẽ đánh dấu nội dung phía sau là comment cho đến ghi gặp <code>*/</code>.</li>
+<li>Các cú pháp comment có dạng <code>///</code> hay <code>//!</code> sẽ có thêm chức năng: dùng nội dung comments để tạo ra tài liệu cho thư viện/ứng dụng đó.</li>
+<li>Một chương trình thực thi viết bằng Rust sẽ phải có hàm <code>main</code> (nếu là thư viện, hàm <code>main</code> là không cần thiết). Trong hàm <code>main</code> này:</li>
+<li><code>fn</code>: là từ khóa bắt buộc (viết tắt: &quot;function&quot;).</li>
+<li><code>main</code>:  là định danh, trường hợp này, cụ thể là tên hàm, được phép dùng các ký tự từ: a—z, A—Z, 0—9, _. Nhưng: không được bắt đầu bằng số, không sử dụng các ký tự non—ascii (không thuộc bảng mã ASCII, vì Rust chưa hỗ trợ hoàn thiện) hay chỉ dùng '_' (đây được gọi là định danh đặc biệt ('reserved identifier'). Những trường hợp định danh khác (tên biến,...) cũng tuân theo quy luật này.
+<ul>
+<li>Tên hợp lệ: SmileSweet, _sister_sadistic, sUrPrIsE69,...</li>
+<li>Tên không hợp lệ: 0service, _, skrâtâ...</li>
+</ul>
+</li>
+<li><code>()</code>: sau khi khai báo tên hàm, phần trong cặp ngoặc này sẽ chứa tên biến truyền vào. Hàm <code>main</code> luôn không có bất kỳ biến nào. Sau cặp ngoặc này sẽ khai báo kiểu trả về của hàm (chúng ta sẽ đi sâu vào ở các ngày tiếp theo).</li>
+<li>Kiểu trả về: Nếu không chỉ định kiểu trả về, Rust mặc định trả về kiểu Unit <code>()</code> (không giống <code>void</code> trong C/C++). Hàm <code>main</code> có thể trả về kiểu khác: <code>Result&lt;()&gt;</code> nhưng chúng ta chưa đề cập phần này ở đây.</li>
+<li><code>{}</code>: khối lệnh sẽ được đặt trong cặp ngoặc nhọn. Các biến được khởi tạo phạm vi (scope) này sẽ được <bold>tự động</bold> hủy khi ra khỏi scope.</li>
+<li><code>;</code>: ký tự đánh dấu kết thúc lệnh. Lưu ý: trường hợp duy nhất không dùng <code>;</code> là khi rút ngắn cho lệnh <code>return</code> (sẽ đề cập sau).</li>
+<li><code>println!</code>: là một <strong>macro</strong> (vì theo sau là dấu <code>!</code>), không nên nhầm lẫn với hàm (không được kết thúc với <code>!</code>). Hệ thống macro trong Rust cực kỳ mạnh mẽ và cũng khá khó (hơn nhiều so với C/C++), nên mình sẽ hướng dẫn sử dụng chứ không hướng dẫn cách viết macros.</li>
+<li><code>&quot;...&quot;</code>: Rust sử dụng dấu ngoặc kép để đánh dấu chuỗi. Một chuỗi trong Rust <strong>luôn luôn</strong> là một <a href="https://vi.wikipedia.org/wiki/Unicode">chuỗi Unicode hợp lệ</a>. Nâng cao: vì lẽ đó, Rust không cho phép bạn đánh chỉ số của chuỗi như các ngôn ngữ lập trình phổ biến khác! Nhưng sẽ có cách khác để làm việc này. Sẽ đề cập sau :p</li>
+</ul>
+<p>Kết: Viết nhiều như thế nhưng có lẽ đa số các bạn đều đã biết hết rồi (vì phần này cũng không khác C/C++ gì cho lắm).</p>
+<p>Phát triển: Hãy thử thay chuỗi &quot;Hello world!&quot; bằng một chuỗi khác xem. Chẳng hạn một chuỗi &quot;trái tim lấp lánh 💖&quot; chẳng hạn?</p>
+<hr />
+<a class="header" href="#a-làm-việc-với-giao-diện-dòng-lệnh" id="a-làm-việc-với-giao-diện-dòng-lệnh"><h2>— Làm việc với giao diện dòng lệnh</h2></a>
+<p>Như yêu cầu của mình ở trên, các bạn cần phải biết một số thao tác cơ bản với dòng lệnh để có thể dễ dàng theo dõi hướng dẫn này. Nếu còn băn khoăn, đừng ngần ngại dùng Google nhé!</p>
+<a class="header" href="#a-trình-biên-dịch-rust" id="a-trình-biên-dịch-rust"><h3>— Trình biên dịch Rust</h3></a>
+<p>Nếu bạn đã cài đặt Rust thành công, thì:</p>
+<pre><code class="language-text">$ rustc --version
+rustc 1.28.0 (9634041f0 2018—07—30)
+</code></pre>
+<p>Ngoài lề: dấu <code>$</code> trong ví dụ trên là dấu nhắc lệnh (vui lòng không gõ luôn vào commandline :joy:).</p>
+<p>Lệnh <code>rustc</code> cũng sẽ có options khác, gõ <code>rustc --help</code> để biết thêm thông tin chi tiết :D. Để compile 1 file <code>.rs</code>, chúng ta gõ (giả sử chúng ta đang compile một file <code>helloworld.rs</code> như ở trên):</p>
+<pre><code class="language-text">$ rustc helloworld.rs
+</code></pre>
+<p>Rust không hiện thông báo lỗi nào tức là compile thành công. Ta chạy thử chương trình này bằng cách gõ:</p>
+<pre><code class="language-text">$ ./helloworld
+Hello world!
+</code></pre>
+<p>Chương trình đã thực thi thành công và in ra màn hình dòng &quot;Hello world!&quot; (như chúng ta mong muốn). Đối với Windows, đổi <code>./helloword</code> thành <code>.\helloworld</code>.
+Ngoài ra, <code>rustc</code> còn có cách chế độ optimize khác nhau, nhưng mình sẽ không đề cập ở đây. Các bạn có thể tự tìm hiểu thêm thông qua Google hoặc (<code>rustc --help</code>). Vì chúng ta sẽ sử dụng một công cụ thay chúng ta làm các việc này.
+Đối với một chương trình lớn, nhiều thư viện ngoài, compile bằng cách này không hay và mất thời gian. Mình sẽ hướng dẫn các bạn dùng CMake để tạo ra Makefile rồi dùng Makefilesss này compile cả dự án của bạn :joy:. Nói chứ đùa thôi, Rust toolchains đi kèm công cụ tên Cargo (như phần mở đầu có đề cập), giúp quản lý dự án của bạn khá hiệu quả.</p>
+<a class="header" href="#a-i-love-cargo" id="a-i-love-cargo"><h3>— I love Cargo</h3></a>
+<p>Cargo là công cụ rất hiệu quả, giúp tiết kiệm công sức của bạn. Cargo cuả Rust tương tự như nodejs có npm, ... vậy.
+Phiên bản cargo mình dùng trong bài viết này là: <code>cargo 1.28.0 (96a2c7d16 2018—07—13)</code>
+Cargo có các subcommands (lệnh nhỏ hơn):</p>
+<pre><code class="language-text">$ # Options '--help' để xem các options và danh sách subcommands
+$ cargo --help
+Rust's package manager
+
+USAGE:
+    cargo [OPTIONS] [SUBCOMMAND]
+&lt;đã cắt bớt ...&gt;
+See 'cargo help &lt;command&gt;' for more information on a specific command.
+
+$ # Dùng subcommand `help` để xem hướng dẫn sử dụng của từng subcommand.
+$ # Ví dụ: mình muốn xem lệnh run thì gõ:
+$ cargo help run
+cargo—build 
+Compile a local package and all of its dependencies
+
+USAGE:
+    cargo build [OPTIONS]
+
+OPTIONS:
+&lt;... đã cắt bớt ...&gt;
+</code></pre>
+<hr />
+<p>Các subcommands mà các bạn mới học sẽ hay dùng:</p>
+<ul>
+<li><code>new</code>: dùng để tạo 1 project mới. Có 2 options cơ bản:
+<ul>
+<li><code>--bin</code>: tạo project là 1 ứng dụng thực thi (mặc định nếu bạn không dùng options nào cả). Cây thư mục có dạng: <img src="hello-cargo/d1.cargo.new.bin+tree.png" alt="" /> File <code>src/main.rs</code> là file chính chứa hàm <code>main</code>, <code>Cargo.toml</code> là dùng để thêm các thư viện cần thiết, thay đổi version, thêm các options dành cho việc build, ...</li>
+<li><code>--lib</code>: tạo project là 1 thư viện, file chính là <code>lib.rs</code> thay vì <code>main.rs</code> như ví dụ trên, hàm <code>main</code> không bắt buộc. Thư viện tạo ra có thể là thư viện Rust (<code>.rlib</code>) hay <code>.dll</code>/<code>.so</code>, ...</li>
+<li>Ngoài ra, cargo còn 'init' git dùm mình. Nếu bạn không dùng git thì có thể bỏ qua.</li>
+</ul>
+</li>
+<li><code>build</code>: dùng để ... build project. Mặc định Rust sẽ build ở mode debug và không optimize. Mode này hữu ích với bạn khi cần debug nhưng nó sẽ không nhanh.
+<ul>
+<li><code>--release</code>: để optimize.</li>
+<li><code>—v</code> hoặc <code>--verbose</code>: có thể trong lúc build, cargo bị sản, hãy dùng option này để xem cargo đang làm gì project của mình khi build (nói chính xác là option này chỉ định cargo hiện ra chi tiết tiến trình làm việc).</li>
+<li>Sau khi build, một thư mục tên là <code>target</code> sẽ được tạo, tùy vào bạn có sử dụng <code>--release</code> hay không mà sẽ có thư mục <code>debug</code> hay <code>release</code> tương ứng như hình sau: <img src="hello-cargo/d1.cargo.run+tree.png" alt="" /></li>
+</ul>
+</li>
+<li><code>check</code>: như <code>build</code> (cũng có <code>--release</code> và <code>--verbose</code>) nhưng chỉ check lỗi trong project, không tạo ra bất kỳ file nào (nhưng cargo vẫn sẽ tải và 'compile' các thư viện còn thiếu). Lệnh hày hữu ích khi bạn chỉ muốn xem trong project còn lỗi cú pháp nào hay không (vì thời gian compile của rustc là hơi lâu).</li>
+<li><code>run</code>: như <code>build</code> (cũng có <code>--release</code> và <code>--verbose</code>) nhưng sau khi build, cargo sẽ gọi luôn file thực thi.</li>
+</ul>
+<hr />
+<p>Trên đây là các lệnh cơ bản. Hãy dùng option <code>--help</code> và subcommand <code>help</code> để tìm hiểu thêm.</p>
+<p>Một file <code>Cargo.lock</code> sẽ tạo sau lần <code>check</code>, <code>build</code>, <code>run</code> lần đầu tiên. Nó có nhiệm vụ cho phép duy nhất 1 tiến trình cargo làm việc trong 1 project, vì vậy bạn không thể 3 commandline rồi dùng 3 lệnh <code>check</code>, <code>build</code>, <code>run</code> cùng 1 lúc trên 1 project. Các tiến trình khác sẽ đợi tiến trình phía trước làm việc xong rồi mới thực thi.
+Mình lưu ý thế này để khi các bạn dùng Sublime Text (+ Rust enhanced) có thể sẽ hơi hoang mang: tại sao cargo không chịu build dùm tui đi chứ? Vì khi bạn <code>Ctrl+S</code> thì Rust Enhanced sẽ chạy kiểm tra lỗi và lock file <code>Cargo.lock</code> nên cargo chưa thể build được.</p>
+<hr />
+<a class="header" href="#a-contributors" id="a-contributors"><h2>— Contributors:</h2></a>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="overview.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="overview.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
