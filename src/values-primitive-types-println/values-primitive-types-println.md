@@ -50,6 +50,7 @@ Dấu gạch dưới (Underscores) `_` có thể được dùng cho dễ đọc,
 Kiểu số nguyên trong Rust được bắt đầu bằng `i`, `u` và phía sau là kích thước (tính bằng bit) của nó. Trong đó, `i<n>` nghĩa là kiểu số nguyên có dấu (Signed Integer) có khoảng giá trị từ -2<sup>n-1</sup> đến 2<sup>n-1</sup>-1, `u<n>` là kiểu số nguyên không dấu (Unsigned Integer) có khoảng giá trị từ 0 đến 2<sup>n</sup>-1. 
 
 Dưới đây là các kiểu số nguyên trong Rust:
+
 | Kích thước | Signed | Unsigned |
 |--------------|---------|------------|
 |8 bit         |`i8`     |`u8`        |
