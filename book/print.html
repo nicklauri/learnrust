@@ -72,7 +72,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="overview.html"><strong aria-hidden="true">1.</strong> Hello Rust</a></li><li><a href="hello-cargo.html"><strong aria-hidden="true">2.</strong> Hello Cargo</a></li></ol>
+            <ol class="chapter"><li><a href="overview/overview.html"><strong aria-hidden="true">1.</strong> Hello Rust</a></li><li><a href="hello-cargo/hello-cargo.html"><strong aria-hidden="true">2.</strong> Hello Cargo</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -340,7 +340,7 @@ OPTIONS:
 <ul>
 <li><code>new</code>: dùng để tạo 1 project mới. Có 2 options cơ bản:
 <ul>
-<li><code>--bin</code>: tạo project là 1 ứng dụng thực thi (mặc định nếu bạn không dùng options nào cả). Cây thư mục có dạng: <img src="hello-cargo/d1.cargo.new.bin+tree.png" alt="" /> File <code>src/main.rs</code> là file chính chứa hàm <code>main</code>, <code>Cargo.toml</code> là dùng để thêm các thư viện cần thiết, thay đổi version, thêm các options dành cho việc build, ...</li>
+<li><code>--bin</code>: tạo project là 1 ứng dụng thực thi (mặc định nếu bạn không dùng options nào cả). Cây thư mục có dạng: <img src="d1.cargo.new.bin+tree.png" alt="" /> File <code>src/main.rs</code> là file chính chứa hàm <code>main</code>, <code>Cargo.toml</code> là dùng để thêm các thư viện cần thiết, thay đổi version, thêm các options dành cho việc build, ...</li>
 <li><code>--lib</code>: tạo project là 1 thư viện, file chính là <code>lib.rs</code> thay vì <code>main.rs</code> như ví dụ trên, hàm <code>main</code> không bắt buộc. Thư viện tạo ra có thể là thư viện Rust (<code>.rlib</code>) hay <code>.dll</code>/<code>.so</code>, ...</li>
 <li>Ngoài ra, cargo còn 'init' git dùm mình. Nếu bạn không dùng git thì có thể bỏ qua.</li>
 </ul>
@@ -349,7 +349,7 @@ OPTIONS:
 <ul>
 <li><code>--release</code>: để optimize.</li>
 <li><code>—v</code> hoặc <code>--verbose</code>: có thể trong lúc build, cargo bị sản, hãy dùng option này để xem cargo đang làm gì project của mình khi build (nói chính xác là option này chỉ định cargo hiện ra chi tiết tiến trình làm việc).</li>
-<li>Sau khi build, một thư mục tên là <code>target</code> sẽ được tạo, tùy vào bạn có sử dụng <code>--release</code> hay không mà sẽ có thư mục <code>debug</code> hay <code>release</code> tương ứng như hình sau: <img src="hello-cargo/d1.cargo.run+tree.png" alt="" /></li>
+<li>Sau khi build, một thư mục tên là <code>target</code> sẽ được tạo, tùy vào bạn có sử dụng <code>--release</code> hay không mà sẽ có thư mục <code>debug</code> hay <code>release</code> tương ứng như hình sau: <img src="d1.cargo.run+tree.png" alt="" /></li>
 </ul>
 </li>
 <li><code>check</code>: như <code>build</code> (cũng có <code>--release</code> và <code>--verbose</code>) nhưng chỉ check lỗi trong project, không tạo ra bất kỳ file nào (nhưng cargo vẫn sẽ tải và 'compile' các thư viện còn thiếu). Lệnh hày hữu ích khi bạn chỉ muốn xem trong project còn lỗi cú pháp nào hay không (vì thời gian compile của rustc là hơi lâu).</li>
