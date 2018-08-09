@@ -72,7 +72,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="overview/overview.html"><strong aria-hidden="true">1.</strong> Hello Rust</a></li><li><a href="hello-cargo/hello-cargo.html"><strong aria-hidden="true">2.</strong> Hello Cargo</a></li></ol>
+            <ol class="chapter"><li><a href="overview/overview.html"><strong aria-hidden="true">1.</strong> Hello Rust</a></li><li><a href="hello-cargo/hello-cargo.html"><strong aria-hidden="true">2.</strong> Hello Cargo</a></li><li><a href="values-primitive-types-println/values-primitive-types-println.html"><strong aria-hidden="true">3.</strong> Values, primitive type, println!</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -361,6 +361,195 @@ OPTIONS:
 Mình lưu ý thế này để khi các bạn dùng Sublime Text (+ Rust enhanced) có thể sẽ hơi hoang mang: tại sao cargo không chịu build dùm tui đi chứ? Vì khi bạn <code>Ctrl+S</code> thì Rust Enhanced sẽ chạy kiểm tra lỗi và lock file <code>Cargo.lock</code> nên cargo chưa thể build được.</p>
 <hr />
 <a class="header" href="#a-contributors" id="a-contributors"><h2>— Contributors:</h2></a>
+<a class="header" href="#giá-trị-các-kiểu-dữ-liệu-và-khai-báo-biến" id="giá-trị-các-kiểu-dữ-liệu-và-khai-báo-biến"><h1>Giá trị, các kiểu dữ liệu và khai báo biến.</h1></a>
+<a class="header" href="#cách-khai-báo-biến" id="cách-khai-báo-biến"><h2>Cách khai báo biến.</h2></a>
+<p>Để khai báo biến, chúng ta sử dụng từ khóa <code>let</code> trước tên biến.
+Xem đoạn code kèm comment bên dưới:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main(){
+    // khai báo biến a với kiểu dữ liệu i32
+    let a:i32; 
+    
+    // khai báo biến b với kiểu dữ liệu i32 và giá trị là 10
+    let b:i32 = 10; 
+    
+    // khai báo biến c với giá trị là 10 và kiểu dữ liệu được 
+    // Rust compiler tự động xác định dựa vào giá trị. 
+    let c = 10;  
+}
+</code></pre></pre>
+<p>Các biến mặc định là immutable (không thể thay đổi giá trị). Để có thể thay đổi giá trị biến chúng ta dùng từ khóa <code>mut</code>. Chi tiết xin đề cập đến ở bài sau.</p>
+<p>Để in ra màn hình 1 biến chúng ta dùng <code>print!(&quot;{}&quot;, &lt;tên biến&gt;);</code> hoặc <code>println!(&quot;{}&quot;, &lt;tên biến&gt;);</code> Sẽ nói rõ hơn về chúng ở cuối bài.</p>
+<pre><pre class="playpen"><code class="language-rust">fn main(){
+    let a = 10;
+    println!(&quot;{}&quot;, a);
+}
+</code></pre></pre>
+<p>output:</p>
+<pre><code>10
+</code></pre>
+<a class="header" href="#giá-trị-và-các-kiểu-dữ-liệu-cơ-bản" id="giá-trị-và-các-kiểu-dữ-liệu-cơ-bản"><h2>Giá trị và các kiểu dữ liệu cơ bản.</h2></a>
+<p>Trong Rust hay các ngôn ngữ lập trình khác, các giá trị tồn tại ở các kiểu khác nhau. Ví dụ: <code>70</code> là một số nguyên(integer), <code>3.14</code> là một số thực(float), <code>z</code> và <code>A</code> là các ký tự (kiểu char,  hay character). Character là các giá trị thuộc bảng mã Unicode dài 4byte. <code>Hello world</code> là 1 chuỗi thuộc kiểu <code>&amp;str</code> (Unicode  UTF8 by default). <code>true</code> và <code>false</code> thuộc kiểu bool(Boolean).
+Interger có thể được biểu diễn bằng các định dạng khác nhau:</p>
+<ul>
+<li>Thập lục phân (Hexadecimal) bắt đầu với <code>0x</code>. Ví dụ: <code>0x32A</code> cho 810.</li>
+<li>Bát phân (Octal) bắt đầu với <code>0o</code>. Ví dụ: <code>0o1452</code> cho 810.</li>
+<li>Nhị phân (Binary) bắt đầu với <code>0b</code>. Ví dụ: <code>0b1100101010</code> cho 810.</li>
+</ul>
+<p>Dấu gạch dưới (Underscores) <code>_</code> có thể được dùng cho dễ đọc, ví dụ 1_000_000 tương đương với 1000000.</p>
+<blockquote>
+<p>Các kiểu dữ liệu số trong Rust gần giống trong Golang.
+Ví dụ <code>int32</code>, <code>uint32</code>, <code>int</code>, <code>uint</code> và <code>float32</code> trong Go tương đương với <code>i32</code>, <code>u32</code>, <code>isize</code>, <code>usize</code> và <code>f32</code> trong Rust.</p>
+</blockquote>
+<a class="header" href="#kiểu-số-nguyên-integer" id="kiểu-số-nguyên-integer"><h3>Kiểu số nguyên (Integer)</h3></a>
+<p>Kiểu số nguyên trong Rust được bắt đầu bằng <code>i</code>, <code>u</code> và phía sau là kích thước (tính bằng bit) của nó. Trong đó, <code>i&lt;n&gt;</code> nghĩa là kiểu số nguyên có dấu (Signed Integer) có khoảng giá trị từ -2<sup>n-1</sup> đến 2<sup>n-1</sup>-1, <code>u&lt;n&gt;</code> là kiểu số nguyên không dấu (Unsigned Integer) có khoảng giá trị từ 0 đến 2<sup>n</sup>-1.</p>
+<p>Dưới đây là các kiểu số nguyên trong Rust:
+| Kích thước | Signed | Unsigned |
+|--------------|---------|------------|
+|8 bit         |<code>i8</code>     |<code>u8</code>        |
+|16 bit        |<code>i16</code>    |<code>u16</code>       |
+|32 bit        |<code>i32</code>    |<code>u32</code>       |
+|64 bit        |<code>i64</code>    |<code>u64</code>       |
+|128 bit       |<code>i128</code>   |<code>u128</code>      |</p>
+<p>Ngoài ra, Rust còn có 2 kiểu số nguyên phụ thuộc vào kiến trúc hệ điều hành là <code>isize</code> (số nguyên có dấu) và <code>usize</code> (số nguyên không dấu). Chúng có kích thước 32 bit trong hệ thống 32 bit và 64 bit trong hệ thống 64 bit.</p>
+<a class="header" href="#kiểu-số-thực-float" id="kiểu-số-thực-float"><h3>Kiểu số thực (Float)</h3></a>
+<p>Trong Rust có 2 kiểu số thực là <code>f32</code> và <code>f64</code> tương đương với kích thước 32 và 64 bit.
+cách khai báo</p>
+<pre><pre class="playpen"><code class="language-rust">fn main(){
+    let a = 3; // a thuộc kiểu integer(i32 by default), không phải float
+    let b = 3.0; // b thuộc kiểu float (f64 by default)
+    let c:f32 = 3; // c thuộc kiểu float(f32)
+}
+</code></pre></pre>
+<a class="header" href="#các-phép-toán" id="các-phép-toán"><h3>Các phép toán</h3></a>
+<p>Rust hỗ trợ các phép toán cơ bản sử dụng cho tất cả các kiểu dữ liệu số: cộng (addition), trừ (subtraction), nhân (multiplication), chia (division) và chia lấy phần dư (remainder).
+Ví dụ:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() {
+    // addition
+    let sum = 5 + 10;
+    println!(&quot;{}&quot;, sum); // 15
+
+    // subtraction
+    let difference = 95.5 - 4.3;
+    println!(&quot;{}&quot;, difference); // 91.2
+    
+    // multiplication
+    let product = 4 * 30;
+    println!(&quot;{}&quot;, product); // 120
+    
+    // division
+    let quotient = 56.7 / 32.2; // float number
+    let quotient2 = 56 / 32; // integer number
+    println!(&quot;{}&quot;, quotient); // 1.7608695652173911
+    println!(&quot;{}&quot;, quotient2); // 1
+    
+
+    // remainder
+    let remainder = 43 % 5;
+    println!(&quot;{}&quot;, remainder); // 3
+}
+</code></pre></pre>
+<a class="header" href="#kiểu-luận-lý-boolean" id="kiểu-luận-lý-boolean"><h3>Kiểu luận lý (Boolean)</h3></a>
+<p>Giống trong hầu hết các ngôn ngữ lập trình, kiểu <code>bool</code> trong rust có 2 giá trị là <code>true</code> và <code>false</code></p>
+<pre><pre class="playpen"><code class="language-rust">fn main(){
+    let a:bool = false; // khai báo `a` kiểu bool giá trị false
+    let b = true; // rust compiler tự suy luận `b` thuộc kiểu bool
+}
+</code></pre></pre>
+<a class="header" href="#kiểu-kí-tự-character" id="kiểu-kí-tự-character"><h3>Kiểu kí tự (Character)</h3></a>
+<p>Kiểu <code>char</code> trong Rust được biểu diễn bên trong dấu nháy đơn <code>'</code> là các ký tự thuộc bảng mã Unicode:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main(){
+    let a = 'a';
+    let b = '😻';
+    println!(&quot;{}&quot;, a);
+    println!(&quot;{}&quot;, b);
+}
+</code></pre></pre>
+<p>output:</p>
+<pre><code>a
+😻
+</code></pre>
+<a class="header" href="#kiểu-chuỗi-string" id="kiểu-chuỗi-string"><h3>Kiểu chuỗi (String)</h3></a>
+<p>Trong Rust có 2 kiểu chuỗi là <code>&amp;str</code> và <code>String</code>. <code>String</code> sẽ được giới thiệu sau.</p>
+<pre><pre class="playpen"><code class="language-rust">fn main(){
+    let s = &quot;Hello World&quot;; // kiểu &amp;'static str ('static là lifetime, chúng ta chưa quan tâm.)
+    println!(&quot;{}&quot;, s); // Hello World
+}
+</code></pre></pre>
+<a class="header" href="#empty-type-" id="empty-type-"><h3>Empty type <code>()</code></h3></a>
+<p><code>()</code> trong Rust có nghĩa là không có giá trị. Các hàm trả về kiểu <code>()</code> tương đương với các hàm không trả về giá trị. Ví dụ:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main() -&gt; (){
+}
+</code></pre></pre>
+<p>Tương đương với</p>
+<pre><pre class="playpen"><code class="language-rust">fn main(){
+}
+</code></pre></pre>
+<p><code>()</code> không tương đương với <code>null</code> trong các ngôn ngữ khác. <code>null</code> là giá trị còn <code>()</code> không phải là giá trị.</p>
+<a class="header" href="#nói-thêm-về-println" id="nói-thêm-về-println"><h2>Nói thêm về <code>println!</code></h2></a>
+<p><code>println!</code> tương đương với <code>print!</code> khác biệt là <code>println!</code> sẽ thêm ký tự xuống dòng ở cuối chuỗi được in ra.</p>
+<p>Như các ví dụ phía trên, cách rõ nhất để biết giá trị của biến là hiển thị nó ra.</p>
+<pre><pre class="playpen"><code class="language-rust">fn main(){
+    let a = 10;
+    println!(&quot;giá trị của biến a là: {}&quot;, a);
+}
+</code></pre></pre>
+<p>Đối số đầu tiên của  macro <code>println!</code> là 1 chuỗi định dạng kèm theo là các <code>{}</code> (placeholder). Giá trị các hằng số hay các biến sẽ được chuyển thành chuỗi và lần lượt thay thế vào các vị trí <code>{}</code>. Ví dụ:</p>
+<pre><pre class="playpen"><code class="language-rust">fn main(){
+    println!(&quot;{}, {}, {}&quot;, 1, false, &quot;hello world&quot;)&quot;;
+}
+</code></pre></pre>
+<p>output:</p>
+<pre><code>1, false, hello world
+</code></pre>
+<p><strong>Các placeholder có thể được đánh thứ tự để sử dụng nhiều lần:</strong></p>
+<pre><pre class="playpen"><code class="language-rust">fn main(){
+    let name = &quot;Rust&quot;;
+    let version = 1.28;
+    println!(&quot;{0} là 1 ngôn ngữ lập trình dạng biên dịch. 
+Phiên bản mới nhất của {0} hiện tại là {1}&quot;, name, version);
+}
+</code></pre></pre>
+<p>output :</p>
+<pre><code>Rust là 1 ngôn ngữ lập trình dạng biên dịch. 
+Phiên bản mới nhất của Rust hiện tại là 1.28
+
+</code></pre>
+<p><strong>Cũng có thể đặt tên cho các đối số:</strong></p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+println!(&quot;Ngôn ngữ lập trình là {name}&quot;, name = &quot;Rust&quot;);
+#}</code></pre></pre>
+<p>output:</p>
+<pre><code>Ngôn ngữ lập trình là Rust
+</code></pre>
+<p><strong>Các định dạng đặc biệt có thể được biểu thị bên trong <code>{}</code> sau dấu <code>:</code></strong>
+Ví dụ:</p>
+<pre><pre class="playpen"><code class="language-rust">
+# #![allow(unused_variables)]
+#fn main() {
+    println!(&quot;Số 18 trong hệ thập lục phân là {:0x}.&quot;, 18);
+    println!(&quot;Số 18 trong hệ nhị phân là {:0b}&quot;, 18);   
+    println!(&quot;Số 18 trong hệ bát phân là {:0o}&quot;, 18);
+#}</code></pre></pre>
+<p>output:</p>
+<pre><code>Số 18 trong hệ thập lục phân là 12.
+Số 18 trong hệ nhị phân là 10010
+Số 18 trong hệ bát phân là 22
+</code></pre>
+<p>Các kiểu format như trên gồm có:</p>
+<ul>
+<li><code>?</code> cho mục đích debug</li>
+<li><code>o</code> cho số hệ bát phân</li>
+<li><code>x</code>  cho số hệ thập lục phân ở dạng viết thường</li>
+<li><code>X</code>  cho số hệ thập lục phân ở dạng viết hoa</li>
+<li><code>p</code> cho con trỏ (địa chỉ)</li>
+<li><code>b</code> cho số hệ nhị phân</li>
+<li><code>e</code> cho biểu diễn số mũ số thực dạng viết thường</li>
+<li><code>E</code> cho biểu diễn số mũ số thực dạng viết hoa</li>
+</ul>
+<p>macro <code>format!</code> trả về giá trị kiểu <code>String</code> cũng có cách dùng tương tự với <code>println!</code>.
+Xem thêm tại https://doc.rust-lang.org/std/fmt/</p>
 
                     </main>
 
