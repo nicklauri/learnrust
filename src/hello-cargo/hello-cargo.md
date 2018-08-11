@@ -115,13 +115,13 @@ OPTIONS:
 Các subcommands mà các bạn mới học sẽ hay dùng:
 
 - `new`: dùng để tạo 1 project mới. Có 2 options cơ bản:
-  - `--bin`: tạo project là 1 ứng dụng thực thi (mặc định nếu bạn không dùng options nào cả). Cây thư mục có dạng: ![](hello-cargo/d1.cargo.new.bin+tree.png) File `src/main.rs` là file chính chứa hàm `main`, `Cargo.toml` là dùng để thêm các thư viện cần thiết, thay đổi version, thêm các options dành cho việc build, ...
+  - `--bin`: tạo project là 1 ứng dụng thực thi (mặc định nếu bạn không dùng options nào cả). Cây thư mục có dạng: ![](d1.cargo.new.bin+tree.png) File `src/main.rs` là file chính chứa hàm `main`, `Cargo.toml` là dùng để thêm các thư viện cần thiết, thay đổi version, thêm các options dành cho việc build, ...
   - `--lib`: tạo project là 1 thư viện, file chính là `lib.rs` thay vì `main.rs` như ví dụ trên, hàm `main` không bắt buộc. Thư viện tạo ra có thể là thư viện Rust (`.rlib`) hay `.dll`/`.so`, ...
   - Ngoài ra, cargo còn 'init' git dùm mình. Nếu bạn không dùng git thì có thể bỏ qua.
 - `build`: dùng để ... build project. Mặc định Rust sẽ build ở mode debug và không optimize. Mode này hữu ích với bạn khi cần debug nhưng nó sẽ không nhanh.
   - `--release`: để optimize.
   - `—v` hoặc `--verbose`: có thể trong lúc build, cargo bị sản, hãy dùng option này để xem cargo đang làm gì project của mình khi build (nói chính xác là option này chỉ định cargo hiện ra chi tiết tiến trình làm việc).
-  - Sau khi build, một thư mục tên là `target` sẽ được tạo, tùy vào bạn có sử dụng `--release` hay không mà sẽ có thư mục `debug` hay `release` tương ứng như hình sau: ![](hello-cargo/d1.cargo.run+tree.png)
+  - Sau khi build, một thư mục tên là `target` sẽ được tạo, tùy vào bạn có sử dụng `--release` hay không mà sẽ có thư mục `debug` hay `release` tương ứng như hình sau: ![](d1.cargo.run+tree.png)
 - `check`: như `build` (cũng có `--release` và `--verbose`) nhưng chỉ check lỗi trong project, không tạo ra bất kỳ file nào (nhưng cargo vẫn sẽ tải và 'compile' các thư viện còn thiếu). Lệnh hày hữu ích khi bạn chỉ muốn xem trong project còn lỗi cú pháp nào hay không (vì thời gian compile của rustc là hơi lâu).
 - `run`: như `build` (cũng có `--release` và `--verbose`) nhưng sau khi build, cargo sẽ gọi luôn file thực thi.
 
