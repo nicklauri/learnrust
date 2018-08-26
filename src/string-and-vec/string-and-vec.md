@@ -1,5 +1,6 @@
 
 # Mở đầu
+---
 
 Hôm trước ([ngày 2](https://daynhauhoc.com/t/cung-hoc-rust-ngay-thu-2-gia-tri-cac-kieu-du-lieu-khai-bao-bien-println/72631)), chúng ta đã được học về 'Giá trị, các kiểu dữ liệu nguyên thủy của Rust'.
 Hôm nay chúng ta sẽ học về một số kiểu dữ liệu dựng sẵn là Vec (viết tắt của vector) và String. Sau bài này, mình muốn các bạn có thể sử dụng được Vec và String ở mức cơ bản.
@@ -11,6 +12,7 @@ Hai kiểu dữ liệu này bạn sẽ dùng thường xuyên trong Rust như C+
 `String` và `Vec` không cần phải `use` nó (như import/include thư viện, đề cập sau) chúng mà vẫn sử dụng được.
 
 # [`std::string::String`](https://doc.rust-lang.org/std/string/struct.String.html)
+---
 
 Bản thân 1 `String` hay `&str` đều là một chuỗi UTF-8 *hợp lệ*! Vì chuỗi UTF-8 ( sẽ không có dạng 1 byte - 1 ký tự như ASCII, [tham khảo UTF-8](https://en.wikipedia.org/wiki/UTF-8), nên Rust không cho phép bạn đánh chỉ số nó như `string[10]`, nhưng bạn có thể làm cách khác!
 
@@ -33,6 +35,7 @@ fn main() {
 Để tránh dài dòng, các ví dụ về code phía sau là phần code được lấy trong hàm main, nên mình sẽ không viết lại `fn main() { /* code goes here */ }`
 
 ## Tạo `String`:
+---
 
 - `String::new() -> String`: Dấu "::" (tương tự như C++) là cách mà Rust truy cập vào các phần tử bên trong 1 module, 1 enum hay 1 method của 1 struct nào đó (như static method: gọi trực tiếp mà không cần phải tạo đối tượng - instance):
 
@@ -77,6 +80,7 @@ let s: String = "hello".into();
 ```
 
 ## Methods:
+---
 
 Một chữ `self` bên trong method sẽ đánh dấu đây là một method chỉ được gọi thông qua instance. Thật ra bạn có thể gọi có dạng như: `String::method(&mut a_string, param1, param2);`, nhưng như vậy là quá dài dòng nên hãy dùng `a_string.method(param1, param2);` cho tiện nhé ;) Dấu `.` là cách truy method của một instance (và nó phải `pub`(lic) thì mới xài được nhé).
 Với từng kiểu `&self`, `&mut self`, `self` nó yêu cầu quyền truy cập tối thiểu đối với bản thân của một đối tượng là "đọc được", "đọc được và ghi được", "sẽ có toàn quyền với đối tượng và giải phóng đối tượng sau khi kết thúc hàm. Có nghĩa là, sau một hàm dùng `self` thì bạn không được dùng lại đối tượng đó nữa!
@@ -156,6 +160,7 @@ Phần `Trait Implementation` là tất cả các `trait` đã được viết c
 Đối với các hàm trả về có dạng `Result<OkType,ErrorType>` hoặc `Option<Type>`, bạn có thể dùng `self.unwrap()` để "mở gói" ngay và lấy giá trị bên trong đó, nhưng nếu không có gì trong đó (lỗi hoặc `None`) thì chương trình sẽ bị `panic` và kết thúc. Có thể sẽ gặp khó khăn khi gỡ lỗi vì màn hình thông báo bị `panic` rất rườm rà và dễ rối, hãy dùng "pattern-matching" của Rust - sẽ được đề cập trong lúc học từ khóa `match` nhé!
 
 # [`std::vec::Vec`](https://doc.rust-lang.org/std/vec/struct.Vec.html)
+---
 
 Bản thân `Vec` là một struct, bên trong có chứa một con trỏ trỏ đến dữ liệu trong vùng heap, "ngược" lại với `Vec` là slice `[]`. Dạng thường thấy của slice là dạng borrowed của nó `&[]` (vì cả `str` và `[]` không có độ dài cố định tại compile-time, sẽ nói rõ hơn trong phần primitive types phần 2).
 
@@ -171,6 +176,7 @@ Ngoài ra, `Vec` yêu cầu lập trình viên phải chỉ rõ kiểu dữ li�
 Và `Vec` cho phép đánh chỉ số.
 
 ## Tạo `Vec`:
+---
 
 Dùng static methods hoặc dùng macro có sẵn `vec![]` để tạo nhanh một vector. Macro này có thể viết thành `vec!(...)` hay `vec!{...}`, nhưng mỗi cặp ngoặc có ý nghĩa riêng với từng macros đối với lập trình viên, nên sử dụng `vec![]` để thống nhất (nhưng là như nhau với compiler).
 
@@ -202,6 +208,7 @@ let vector = ref_slice_i32.to_vec();
 ```
 
 ## Methods:
+---
 
 - `fn len(&self) -> usize`: trả về số phần tử đang giữ hiện tại.
 - `fn capacity(&self) -> usize`: sức chứa của vector có thể giữ được bao nhiêu **phần tử** (không phải bytes nhé).
